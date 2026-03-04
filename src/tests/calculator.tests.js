@@ -1,11 +1,14 @@
 /**
  * Unit tests for calculator.js
  *
- * Covers the four basic arithmetic operations:
+ * Covers the following calculator operations:
  *   - Addition
  *   - Subtraction
  *   - Multiplication
  *   - Division (including division-by-zero edge case)
+ *   - Modulo
+ *   - Power
+ *   - Square root
  */
 
 const { add, subtract, multiply, divide, modulo, power, squareRoot } = require('../calculator');

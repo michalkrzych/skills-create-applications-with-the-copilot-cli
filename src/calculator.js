@@ -2,13 +2,13 @@
  * Node.js CLI Calculator
  *
  * Supported operations:
- *   add        - Addition: sum two numbers (e.g. node calculator.js add 5 3)
- *   subtract   - Subtraction: subtract one number from another (e.g. node calculator.js subtract 5 3)
- *   multiply   - Multiplication: multiply two numbers (e.g. node calculator.js multiply 5 3)
- *   divide     - Division: divide one number by another (e.g. node calculator.js divide 5 3)
- *   modulo     - Modulo: remainder of a divided by b (e.g. node calculator.js modulo 10 3)
- *   power      - Exponentiation: base raised to exponent (e.g. node calculator.js power 2 8)
- *   squareRoot - Square root: square root of n (e.g. node calculator.js squareRoot 144)
+ *   add        - Addition: sum two numbers (e.g. node src/calculator.js add 5 3)
+ *   subtract   - Subtraction: subtract one number from another (e.g. node src/calculator.js subtract 5 3)
+ *   multiply   - Multiplication: multiply two numbers (e.g. node src/calculator.js multiply 5 3)
+ *   divide     - Division: divide one number by another (e.g. node src/calculator.js divide 5 3)
+ *   modulo     - Modulo: remainder of a divided by b (e.g. node src/calculator.js modulo 10 3)
+ *   power      - Exponentiation: base raised to exponent (e.g. node src/calculator.js power 2 8)
+ *   squareRoot - Square root: square root of n (e.g. node src/calculator.js squareRoot 144)
  *
  * Usage:
  *   node src/calculator.js <operation> <num1> [num2]
@@ -77,7 +77,8 @@ if (require.main === module) {
   const a = parseFloat(arg1);
   const b = parseFloat(arg2);
 
-  if (!operation || isNaN(a)) {
+  const needsTwoArgs = ['add', 'subtract', 'multiply', 'divide', 'modulo', 'power'].includes(operation);
+  if (!operation || isNaN(a) || (needsTwoArgs && isNaN(b))) {
     console.error('Usage: node src/calculator.js <add|subtract|multiply|divide|modulo|power|squareRoot> <num1> [num2]');
     process.exit(1);
   }
